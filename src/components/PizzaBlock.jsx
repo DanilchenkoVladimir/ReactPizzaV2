@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function PizzaBlock({ name, price, imageUrl, sizes, types }) { //pizzaBlock(props) => pizzaBlock({rtitle, price}) деструктуризация
+function PizzaBlock({ title, price, imageUrl, sizes, types }) { //pizzaBlock(props) => pizzaBlock({title, price}) деструктуризация
   const typeNames = ["тонкое", "традиционное"]; //массив типов толщины теста
   const [pizzaCount, setPizzaCount] = useState(0); //хук useState для отрисовки числа на кнопке
   const [activeType, setActiveType] = useState(0);
@@ -9,10 +9,6 @@ function PizzaBlock({ name, price, imageUrl, sizes, types }) { //pizzaBlock(prop
   const onClickAdd = () => {// функция onClickAdd вызывается по нажатию на кнопку
     setPizzaCount( pizzaCount + 1 ); 
   }
-
- 
-
-
   
   // console.log(pizzaCount);
   return (
@@ -22,16 +18,16 @@ function PizzaBlock({ name, price, imageUrl, sizes, types }) { //pizzaBlock(prop
         src={imageUrl}
         alt="Pizza"
       />
-      <h4 className="pizza-block__title">{name}</h4>
+      <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {types.map((type) => (
-            <li onClick={() => setActiveType(type)}className={activeType === type ? 'active' : ''}>{typeNames[type]}</li>
+          {types.map((type, index) => (
+            <li key={index} onClick={() => setActiveType(type)}className={activeType === type ? 'active' : ''}>{typeNames[type]}</li>
           ))}
         </ul>
         <ul>
           {sizes.map((size, index) => (
-            <li onClick={() => setPizzaSizeActiv(index)} className={pizzaSizeActiv === index ? "active" : ""}>{size} см.</li>
+            <li key={index} onClick={() => setPizzaSizeActiv(index)} className={pizzaSizeActiv === index ? "active" : ""}>{size} см.</li>
           ))}
         </ul>
       </div>

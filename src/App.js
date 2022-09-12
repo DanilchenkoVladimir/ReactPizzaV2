@@ -23,7 +23,7 @@ function App() {
                 <div className="content__items">
                   {
                     pizzas.map((obj) => (
-                      <PizzaBlock {...obj} //spread оператор
+                      <PizzaBlock key={obj.id} {...obj} //spread оператор
                         // name={obj.title} 
                         // price={obj.price}
                         // imageUrl={obj.imageUrl}
